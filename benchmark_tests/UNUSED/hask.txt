@@ -1,0 +1,18 @@
+-- Recursive function to calculate the nth term of the Fibonacci sequence
+fib :: Int -> Int
+fib 0 = 0
+fib 1 = 1
+fib n = fib (n - 1) + fib (n - 2)
+
+main :: IO ()
+main = do
+  -- Call fib 40 30 times and time each call
+  replicateM_ 30 $ do
+    start <- getCurrentTime
+    let result = fib 40
+    end <- getCurrentTime
+
+    -- Calculate the duration in milliseconds
+    let duration = diffUTCTime end start
+
+    putStrLn $ show (floor $ duration * 1000) ++ "ms"
